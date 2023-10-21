@@ -73,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+# App
+gem "http", "~> 5.1"
+gem "nokogiri", "~> 1.15"
