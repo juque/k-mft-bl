@@ -14,10 +14,12 @@ export default class extends Controller {
   }
 
   async search() {
-    console.log('xxxxxxxxxaxxxxxa.....xxxxxx');
     const element = this.wordTarget;
     const word = element.value;
     this.buttonTarget.disabled = true;
+    this.buttonTarget.classList.add('italic');
+    this.buttonTarget.classList.remove('bg-green-500');
+    this.buttonTarget.classList.add('bg-green-900');
     console.log(this.buttonTarget.classList);
     if (word.length > 0) {
       try {
@@ -32,6 +34,8 @@ export default class extends Controller {
       } finally {
         this.buttonTarget.disabled = false;
         this.buttonTarget.classList.remove('italic');
+        this.buttonTarget.classList.remove('bg-green-900');
+        this.buttonTarget.classList.add('bg-green-500');
       }
     }
 
@@ -45,7 +49,7 @@ export default class extends Controller {
         <li><strong>Title</strong>: ${title}</li>
         <li><strong>Phonetic</strong>: ${phonetic}</li>
         <li>
-          <audio controls autoplay>
+          <audio controls autoplay class="block w-full">
             <source src="${audio}" type="audio/mpeg" />
           </audio>
         </li>
