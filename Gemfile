@@ -65,6 +65,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  
+  gem "rspec-rails", "~> 6.0"
+  gem "sinatra", "~> 3.1"
 end
 
 group :test do
@@ -77,3 +80,5 @@ end
 # App
 gem "http", "~> 5.1"
 gem "nokogiri", "~> 1.15"
+
+
