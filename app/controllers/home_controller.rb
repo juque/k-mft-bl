@@ -8,8 +8,6 @@ class HomeController < ApplicationController
   
     result = OxfordFacade.call(params[:q])
 
-    Rails.logger.info result
-
     respond_to do |format|
       format.json { render json: {data: result}, status: 201 }
     end
