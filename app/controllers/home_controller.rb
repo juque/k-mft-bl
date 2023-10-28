@@ -6,10 +6,12 @@ class HomeController < ApplicationController
 
   def perform_scraping
   
-    result = OxfordScraper.call(params[:q])
+    result = OxfordFacade.call(params[:q])
+
+    Rails.logger.info result
 
     respond_to do |format|
-      format.json { render json: result, status: 201 }
+      format.json { render json: {data: result}, status: 201 }
     end
 
   end

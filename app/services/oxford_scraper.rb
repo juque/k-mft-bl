@@ -1,31 +1,33 @@
-require 'http'
 require 'nokogiri'
-require 'json'
-require 'scraper'
 
 class OxfordScraper < ApplicationService
 
-  BASE_URL = 'https://www.oxfordlearnersdictionaries.com'
-  RESOURCE = '/definition/english/'
-
-  attr_reader :word
-
-  def initialize(word)
-    @word = word
+  def initialize(response)
+    @response = response
   end
 
   def call
 
-    begin
-      http = HTTP.persistent(BASE_URL)
-      response = http.follow.get("#{RESOURCE}/#{word}")
-      Scraper.new("#{response.body}").run
-    rescue StandardError => e
-      puts "#{e.class} -> #{e.message}"
-    ensure
-      http.close if http
-    end
+    doc = Nokogiri::HTML(@response.body.to_s)
 
+    scraped_result = {
+      title: extract_inner_html(doc, 'h1'),
+      phonetic: extract_inner_html(doc, '.phon'),
+      audio: extract_attribute_value(doc, '.pron-uk', 'data-src-mp3')
+    }
+
+  end
+
+  private
+
+  def extract_inner_html(doc, selector) 
+    element = doc.css(selector).first
+    element&.inner_html
+  end
+
+  def extract_attribute_value(doc, selector, attribute_name)
+    element = doc.css(selector).first
+    element&.attribute(attribute_name)&.value
   end
 
 end
