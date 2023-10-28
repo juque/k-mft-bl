@@ -67,7 +67,7 @@ group :development do
   # gem "spring"
   
   gem "rspec-rails", "~> 6.0"
-  gem "sinatra", "~> 3.1"
+  gem "webmock", "~> 3.19"
 end
 
 group :test do
@@ -80,5 +80,3 @@ end
 # App
 gem "http", "~> 5.1"
 gem "nokogiri", "~> 1.15"
-
-
