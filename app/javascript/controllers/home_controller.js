@@ -45,16 +45,16 @@ export default class extends Controller {
     const { title, phonetic, audio } = data
 
     this.resultTarget.innerHTML = phonetic && audio ? `
-      <ul style="list-style-type:none;padding-left:0">
-        <li><strong>Title</strong>: ${title}</li>
-        <li><strong>Phonetic</strong>: ${phonetic}</li>
-        <li>
-          <audio controls autoplay class="block w-full">
-            <source src="${audio}" type="audio/mpeg" />
-          </audio>
-        </li>
-      </ul>`
-      : "<p>Word not found</p>"
+      <ul class="md:grid md:grid-flow-col justify-stretch gap-4">
+        <li><strong class="text-gray-400">Title</strong> <div class="bold text-4xl">${title}</div></li>
+        <li class="mt-5 sm:mt-0"><strong class="text-gray-400">Phonetic</strong> <div class="bold text-4xl">${phonetic}</div></li>
+      </ul>
+      <div class="py-5">
+        <audio controls autoplay class="block w-full">
+          <source src="${audio}" type="audio/mpeg" />
+        </audio>
+      </div>`
+      : '<p class="italic">Word not found</p>'
 
   }
 

@@ -1,29 +1,40 @@
 <div data-controller="home">
 
-  <div class="pt-10 head">
+  <div class="pt-5 sm:pt-10 head">
     <h1 class="main-title">/ˈkʌmftəbl/</h1>
   </div>
 
   <div class="main rounded-xl bg-white">
 
-    <div class="relative w-full">
-      <input class="pl-3 text-emerald-50 bg-green-950 w-full outline-none rounded-xl rounded-b-none h-[60px] md:h-[72px]" data-home-target="word" type="text" placeholder="Write a word">
+   <div class="relative w-full">
+
+      <div class="relative text-gray-600 focus-within:text-gray-400">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2 pt-1">
+          <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </button>
+        </span>
+        <input class="pl-10 text-emerald-50 bg-green-950 w-full outline-none rounded-xl rounded-b-none h-[60px] md:h-[72px] text-2xl focus:outline-none focus:bg-white focus:text-gray-900" data-home-target="word" type="text" placeholder="Write a word" autocomplete="off">
+      </div>
+
       <button class="bg-green-500 px-5 py-3 rounded-lg font-medium absolute right-1.5 md:right-3 top-1.5 md:top-3" data-action="click->home#search" data-home-target="button">Search</button>
-      <div data-home-target="result"></div>
+      <div class="py-2 px-3 md:py-7 md:px-5" data-home-target="result"></div>
     </div>
 
-    <h2 class="text-center">Suggested words</h2>
+    <div class="md:pt-3">
+      <h2 class="text-center">Suggested words</h2>
 
-    <ul class="flex" data-home-target="wordList">
-      <li class="flex-none m-1"><a href="#" class="tag-word">success</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">order</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">acknowledge</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">rural</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">nauseous</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">thorough</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">schedule</a></li>
-      <li class="flex-none m-1"><a href="#" class="tag-word">comfortable</a></li>
-    </ul>
+      <ul class="flex-row" data-home-target="wordList">
+        <li class="flex-none m-1"><a href="#" class="tag-word">success</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">order</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">acknowledge</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">rural</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">nauseous</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">thorough</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">schedule</a></li>
+        <li class="flex-none m-1"><a href="#" class="tag-word">comfortable</a></li>
+      </ul>
+    </div>
 
   </div>
 
