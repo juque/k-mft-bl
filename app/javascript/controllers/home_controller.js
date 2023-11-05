@@ -42,16 +42,29 @@ export default class extends Controller {
   }
 
   _renderData(data) {
-    const { title, phonetic, audio } = data
+    const { title, phonetic_uk, phonetic_us, audio_uk, audio_us } = data
+
+    const phonetic = phonetic_uk && phonetic_us;
+    const audio = audio_uk && audio_us;
 
     this.resultTarget.innerHTML = phonetic && audio ? `
-      <ul class="md:grid md:grid-flow-col justify-stretch gap-4">
-        <li><strong class="text-gray-400">Title</strong> <div class="bold text-4xl">${title}</div></li>
-        <li class="mt-5 sm:mt-0"><strong class="text-gray-400">Phonetic</strong> <div class="bold text-4xl">${phonetic}</div></li>
-      </ul>
+      <div class="text-center bold text-4xl">${title}</div>
       <div class="py-5">
+        <div class="px-5 pb-2 flex justify-between">
+          <div>UK</div>
+          <div class="bold text-2xl">${phonetic_uk}</div>
+        </div>
         <audio controls autoplay class="block w-full">
-          <source src="${audio}" type="audio/mpeg" />
+          <source src="${audio_uk}" type="audio/mpeg" />
+        </audio>
+      </div>
+      <div class="py-5">
+        <div class="px-5 pb-2 flex justify-between">
+          <div>US</div>
+          <div class="bold text-2xl">${phonetic_us}</div>
+        </div>
+        <audio controls class="block w-full">
+          <source src="${audio_us}" type="audio/mpeg" />
         </audio>
       </div>`
       : '<p class="italic">Word not found</p>'

@@ -12,8 +12,10 @@ class OxfordScraper < ApplicationService
 
     scraped_result = {
       title: extract_inner_html(doc, 'h1'),
-      phonetic: extract_inner_html(doc, '.phon'),
-      audio: extract_attribute_value(doc, '.pron-uk', 'data-src-mp3')
+      phonetic_uk: extract_inner_html(doc, '.phons_br .phon'),
+      phonetic_us: extract_inner_html(doc, '.phons_n_am .phon'),
+      audio_uk: extract_attribute_value(doc, '.pron-uk', 'data-src-mp3'),
+      audio_us: extract_attribute_value(doc, '.pron-us', 'data-src-mp3')
     }
 
   end
