@@ -42,13 +42,16 @@ export default class extends Controller {
   }
 
   _renderData(data) {
+
+    this.resultTarget.style.display = "block";
+
     const { title, phonetic_uk, phonetic_us, audio_uk, audio_us } = data
 
     const phonetic = phonetic_uk && phonetic_us;
     const audio = audio_uk && audio_us;
 
     this.resultTarget.innerHTML = phonetic && audio ? `
-      <div class="text-center bold text-4xl">${title}</div>
+      <div class="text-center font-black text-4xl">${title}</div>
       <div class="py-5">
         <div class="px-5 pb-2 flex justify-between">
           <div>UK</div>
@@ -58,7 +61,7 @@ export default class extends Controller {
           <source src="${audio_uk}" type="audio/mpeg" />
         </audio>
       </div>
-      <div class="py-5">
+      <div class="pb-5">
         <div class="px-5 pb-2 flex justify-between">
           <div>US</div>
           <div class="bold text-2xl">${phonetic_us}</div>
